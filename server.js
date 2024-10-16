@@ -11,8 +11,8 @@ const multer = require('multer');
 
 
 
-const authenticationRoutes = require("./routes/authenticationRoutes");
-const categoryRoutes = require("./routes/categoryRoutes");
+
+
 
 const accessKeyRoutes = require("./routes/acessKeyRoutes");
 const examRoutes = require("./routes/examRoutes");
@@ -30,8 +30,8 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 
 // Routes
-app.use("/api/authentication", authenticationRoutes);
-app.use("/api/category", categoryRoutes);
+
+
 app.use("/api/accessKeys",accessKeyRoutes);
 app.use("/api/exam-papers",examRoutes);
 app.use("/api/subjects",subjectRoutes)
