@@ -23,17 +23,11 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
+
 app.use(express.json());
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-app.use(
-  cors({
-    origin: process.env.FRONTEND_DOMAIN_NAME,
-    credentials: true,
-    optionsSuccessStatus: 200,
-  })
-);
+
 
 // Routes
 app.use("/api/authentication", authenticationRoutes);
