@@ -38,6 +38,10 @@ app.use("/api/subjects",subjectRoutes)
 // Database connection
 dbconnection();
 
+// Allow requests from your Vercel app
+app.use(cors({
+  origin: 'https://study-max-admin.vercel.app', // Replace with your Vercel domain
+}));
 // Server setup
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
