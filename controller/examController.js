@@ -158,8 +158,9 @@ exports.deleteExamPaper = async (req, res) => {
 
 exports.getAllExamPapers = async (req, res) => {
   try {
+    console.log(req.query);
     const { exam, subject, level, year, paperType } = req.query; // Get filter parameters from query string
-
+    console.log( exam, subject, level, year, paperType)
     // 1. Build the $match stage (for filtering)
     const matchStage = {};
 
@@ -179,7 +180,7 @@ exports.getAllExamPapers = async (req, res) => {
     if (paperType) {
       matchStage.paperType = paperType;
     }
-
+ 
     // 2. Create the aggregation pipeline
     const examPapers = await ExamPaper.aggregate([
       { 

@@ -28,7 +28,7 @@ app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(
   cors({
-    origin: 'https://study-max-admin.vercel.app',
+    origin: '*', 
 
     optionsSuccessStatus: 200,
   })
@@ -36,7 +36,10 @@ app.use(
 
 // Routes
 
-
+// Health check route
+app.use("/", (req, res) => {
+  res.status(200).send("API healthy");
+});
 app.use("/api/accessKeys",accessKeyRoutes);
 app.use("/api/exam-papers",examRoutes);
 app.use("/api/subjects",subjectRoutes)
