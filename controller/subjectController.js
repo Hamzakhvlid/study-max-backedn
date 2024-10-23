@@ -33,4 +33,18 @@ exports.getAllSubjects = async (req, res) => {
   }
 };
 
+exports.deleteSubject = async (req, res) => {
+  try {
+    console.log(req.params.id);
+    const deletedSubject = await Subject.findByIdAndDelete(req.params.id);
+    if (!deletedSubject) {
+      return res.status(404).json({ message: 'Subject not found' });
+    }
+    res.json({ message: 'Subject deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting subject:', error);
+    res.status(500).json({ error: 'Error deleting subject' });
+  }
+};
+
 // ... add other controller functions (getSubjectById, updateSubject, deleteSubject) as needed
